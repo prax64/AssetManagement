@@ -166,6 +166,7 @@ class Tag {
 }
 ```
 
+``` mermaid
 ---
 title: Сущность Identity
 ---
