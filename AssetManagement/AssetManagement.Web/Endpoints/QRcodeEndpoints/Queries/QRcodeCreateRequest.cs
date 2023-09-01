@@ -6,7 +6,10 @@ using Calabonga.OperationResults;
 using Calabonga.UnitOfWork;
 using MediatR;
 using QRCoder;
+using System.IO;
+using Microsoft.AspNetCore.Mvc;
 using static System.Net.Mime.MediaTypeNames;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace AssetManagement.Web.Endpoints.QRcodeEndpoints.Queries
 {
