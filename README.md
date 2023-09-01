@@ -7,7 +7,7 @@
 
 В реализации будут использоваться следующие технологии, сборки, фреймворки, подходы, паттерны:
 
-* База данных PostgreSQL
+* База данных MSSQL
 * EntityFrameworkCore
 * Unit of Work
 * Mediatr
@@ -18,7 +18,7 @@
 * Vertical Slice Architecture
 * Minimal API
 * OpenIddict Auth2.0
-* Nimble Framework (Microservice Template)
+* Nimble Framework 
 * Swagger
 * AppDefinitions
 
