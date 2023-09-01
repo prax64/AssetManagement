@@ -114,6 +114,18 @@ namespace AssetManagement.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "QRcode",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    QRCode = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_QRcode", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Tags",
                 columns: table => new
                 {
@@ -273,32 +285,6 @@ namespace AssetManagement.Infrastructure.Migrations
                         name: "FK_ProductTag_Tags_TagsId",
                         column: x => x.TagsId,
                         principalTable: "Tags",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Reviews",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(2048)", maxLength: 2048, nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
-                    Rating = table.Column<int>(type: "int", nullable: false),
-                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Visible = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
-                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Reviews", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Reviews_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -517,11 +503,6 @@ namespace AssetManagement.Infrastructure.Migrations
                 name: "IX_ProductTag_TagsId",
                 table: "ProductTag",
                 column: "TagsId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Reviews_ProductId",
-                table: "Reviews",
-                column: "ProductId");
         }
 
         /// <inheritdoc />
@@ -558,7 +539,7 @@ namespace AssetManagement.Infrastructure.Migrations
                 name: "ProductTag");
 
             migrationBuilder.DropTable(
-                name: "Reviews");
+                name: "QRcode");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -570,10 +551,10 @@ namespace AssetManagement.Infrastructure.Migrations
                 name: "OpenIddictAuthorizations");
 
             migrationBuilder.DropTable(
-                name: "Tags");
+                name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "Tags");
 
             migrationBuilder.DropTable(
                 name: "Profiles");

@@ -17,7 +17,7 @@ namespace AssetManagement.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.3")
+                .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -129,52 +129,19 @@ namespace AssetManagement.Infrastructure.Migrations
                     b.ToTable("Products", (string)null);
                 });
 
-            modelBuilder.Entity("AssetManagement.Domain.Review", b =>
+            modelBuilder.Entity("AssetManagement.Domain.QRcode", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Content")
+                    b.Property<string>("QRCode")
                         .IsRequired()
-                        .HasMaxLength(2048)
-                        .HasColumnType("nvarchar(2048)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Rating")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UpdatedBy")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
-
-                    b.Property<bool>("Visible")
-                        .HasColumnType("bit");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Reviews", (string)null);
+                    b.ToTable("QRcode", (string)null);
                 });
 
             modelBuilder.Entity("AssetManagement.Domain.Tag", b =>
@@ -695,17 +662,6 @@ namespace AssetManagement.Infrastructure.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("AssetManagement.Domain.Review", b =>
-                {
-                    b.HasOne("AssetManagement.Domain.Product", "Product")
-                        .WithMany("Reviews")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("AssetManagement.Infrastructure.AppPermission", b =>
                 {
                     b.HasOne("AssetManagement.Infrastructure.ApplicationUserProfile", "ApplicationUserProfile")
@@ -819,11 +775,6 @@ namespace AssetManagement.Infrastructure.Migrations
             modelBuilder.Entity("AssetManagement.Domain.Category", b =>
                 {
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("AssetManagement.Domain.Product", b =>
-                {
-                    b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("AssetManagement.Infrastructure.ApplicationUserProfile", b =>

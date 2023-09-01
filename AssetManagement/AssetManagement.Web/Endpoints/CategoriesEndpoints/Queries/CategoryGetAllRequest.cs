@@ -10,7 +10,8 @@ using System.Security.Claims;
 
 namespace AssetManagement.Web.Endpoints.CategoriesEndpoints.Queries
 {
-    public record CategoryGetAllRequest(ClaimsPrincipal User) : IRequest<OperationResult<List<CategoryViewModel>>>;
+    public record CategoryGetAllRequest(ClaimsPrincipal User) : 
+        IRequest<OperationResult<List<CategoryViewModel>>>;
 
     public class CategoryGetAllRequestHendler : IRequestHandler<CategoryGetAllRequest, OperationResult<List<CategoryViewModel>>>
     {

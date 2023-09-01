@@ -32,10 +32,6 @@ namespace AssetManagement.Domain
         /// </summary>
         public int? Price { get; set; }
 
-        /// <summary>
-        /// The collection of the reviews for current product
-        /// </summary>
-        public virtual List<Review>? Reviews { get; set; }
 
         /// <summary>
         /// Lined tags

@@ -21,6 +21,8 @@ namespace AssetManagement.Infrastructure
 
         public DbSet<Tag> Tags { get; set; }
 
+        public DbSet<QRcode> QRcode { get; set; }
+
 
         public DbSet<EventItem> EventItems { get; set; }
 
@@ -52,7 +54,7 @@ public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<Applicati
     public ApplicationDbContext CreateDbContext(string[] args)
     {
         var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
-        optionsBuilder.UseSqlServer("Server=.\\MSEXP;Database=AssetAlmazDB2;Trusted_Connection=True;encrypt=false");
+        optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=AssetAlmazDB2;Trusted_Connection=True;encrypt=false");
         return new ApplicationDbContext(optionsBuilder.Options);
     }
 }
