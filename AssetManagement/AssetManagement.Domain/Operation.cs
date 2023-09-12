@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AssetManagement.Domain.Base;
 
 namespace AssetManagement.Domain
 {
-    internal class Operation
+    /// <summary>
+    /// Операция над продуктом
+    /// </summary>
+    public class Operation : Identity
     {
+        /// <summary>
+        /// Имя операции
+        /// </summary>
+        public string Name { get; set; } = null!;
+
+        /// <summary>
+        /// Описание операции
+        /// </summary>
+        public string? Description { get; set; }
     }
 }

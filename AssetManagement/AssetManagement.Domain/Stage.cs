@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AssetManagement.Domain.Base;
 
 namespace AssetManagement.Domain
 {
-    internal class Stage
+    /// <summary>
+    /// Стадия маршрута
+    /// </summary>
+    public class Stage : Identity
     {
+        /// <summary>
+        /// Имя стадии
+        /// </summary>
+        public string Name { get; set; } = null!;
+
+        /// <summary>
+        /// Описание стадии
+        /// </summary>
+        public string? Description { get; set; }
     }
 }

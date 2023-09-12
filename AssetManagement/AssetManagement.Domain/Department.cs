@@ -1,12 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AssetManagement.Domain.Base;
 
 namespace AssetManagement.Domain
 {
-    internal class Department
+    public class Department : Identity
     {
+        /// <summary>
+        /// Имя отдела
+        /// </summary>
+        public string Name { get; set; } = null!;
+
+        /// <summary>
+        /// Описание отдела
+        /// </summary>
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Люди в текущем отделе
+        /// </summary>
+        public virtual List<User>? Users { get; set; }
     }
 }
