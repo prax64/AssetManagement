@@ -21,8 +21,17 @@ namespace AssetManagement.Infrastructure
 
         public DbSet<Tag> Tags { get; set; }
 
-        public DbSet<QRcode> QRcode { get; set; }
+        public DbSet<QRcode> QRcode { get; set; } // потом удалить
 
+        public DbSet<Department> departments { get; set; }
+
+        public DbSet<Operation> operations { get; set; }
+
+        public DbSet<ProductMovement> productMovements { get; set; }
+
+        public DbSet<Route> routes { get; set; }
+
+        public DbSet<Stage> stages { get; set; }
 
         public DbSet<EventItem> EventItems { get; set; }
 

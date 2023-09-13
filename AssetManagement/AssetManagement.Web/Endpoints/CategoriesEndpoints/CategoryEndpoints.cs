@@ -15,6 +15,7 @@ namespace AssetManagement.Web.Endpoints.CategoriesEndpoints
         public override void ConfigureApplication(WebApplication app)
         {
             app.MapGet("/api/categories/get-all", GetAllCategories);
+            app.MapGet("/api/categories/{id:guid}", GetByIdCategories);
             app.MapPost("/api/categories/create", CreateCategory);
 
 
@@ -38,6 +39,18 @@ namespace AssetManagement.Web.Endpoints.CategoriesEndpoints
             HttpContext context)
         {
             return mediator.Send(new CategoryCreateRequest(createViewModel), context.RequestAborted);
+        }
+
+        [ProducesResponseType(200)]
+        [ProducesResponseType(401)]
+        [FeatureGroupName("Catigories")]
+        [Authorize(AuthenticationSchemes = AuthData.AuthSchemes)]
+        private Task<OperationResult<CategoryViewModel>> GetByIdCategories(
+            Guid id,
+            [FromServices] IMediator mediator,
+            HttpContext context)
+        {
+            return mediator.Send(new CategoryGetByIdRequest(id, context.User), context.RequestAborted);
         }
     }
 }

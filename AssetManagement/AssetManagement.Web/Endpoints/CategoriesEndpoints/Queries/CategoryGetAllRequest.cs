@@ -34,13 +34,7 @@ namespace AssetManagement.Web.Endpoints.CategoriesEndpoints.Queries
 
             var items = await _unitOfWork.GetRepository<Category>()
                 .GetAllAsync(
-                    selector: s=> new CategoryViewModel
-                    {
-                        Id = s.Id, 
-                        Name = s.Name, 
-                        Description= s.Description, 
-                        ProductCount = s.Products!.Count
-                    },
+                    selector: CategoryExpressions.Default,
                     predicate: predicate,
                     include: i=>i.Include(x=>x.Products!)
                 );
